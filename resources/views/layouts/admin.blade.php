@@ -83,12 +83,6 @@
                         </li>
 
                         <li class="nav-item">
-                        <a href="{{ route('roles') }}" class="nav-link">
-                                <i class="nav-icon fas fa-user-lock"></i>
-                                <p> Roles & Permissions</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                         <a href="{{ route('messages') }}" class="nav-link">
                                 <i class="nav-icon fas fa-envelope"></i>
                                 <p> Messages</p>

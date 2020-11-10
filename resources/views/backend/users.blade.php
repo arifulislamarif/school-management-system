@@ -1,98 +1,113 @@
 @extends('layouts.admin')
 
 @section('breadcrumbs')
-    <div class="row mb-2">
-        <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Users</h1>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item active">Users</li>
-            </ol>
-        </div>
+<div class="row mb-2">
+    <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Users</h1>
     </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item active">Users</li>
+        </ol>
+    </div>
+</div>
 @endsection
 @section('content')
 
-<div class="card">
-    <div class="card-header">
-      <h3 class="card-title">All User List</h3>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-      <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
-        <thead>
-        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Rendering engine</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Browser</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Platform(s)</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="">CSS grade</th></tr>
-        </thead>
-        <tbody>
-        <tr role="row" class="odd">
-          <td tabindex="0" class="sorting_1">Gecko</td>
-          <td>Firefox 1.0</td>
-          <td>Win 98+ / OSX.2+</td>
-          <td>1.7</td>
-          <td style="">A</td>
-        </tr><tr role="row" class="even">
-          <td tabindex="0" class="sorting_1">Gecko</td>
-          <td>Firefox 1.5</td>
-          <td>Win 98+ / OSX.2+</td>
-          <td>1.8</td>
-          <td style="">A</td>
-        </tr><tr role="row" class="odd">
-          <td tabindex="0" class="sorting_1">Gecko</td>
-          <td>Firefox 2.0</td>
-          <td>Win 98+ / OSX.2+</td>
-          <td>1.8</td>
-          <td style="">A</td>
-        </tr><tr role="row" class="even">
-          <td tabindex="0" class="sorting_1">Gecko</td>
-          <td>Firefox 3.0</td>
-          <td>Win 2k+ / OSX.3+</td>
-          <td>1.9</td>
-          <td style="">A</td>
-        </tr><tr role="row" class="odd">
-          <td class="sorting_1" tabindex="0">Gecko</td>
-          <td>Camino 1.0</td>
-          <td>OSX.2+</td>
-          <td>1.8</td>
-          <td style="">A</td>
-        </tr><tr role="row" class="even">
-          <td class="sorting_1" tabindex="0">Gecko</td>
-          <td>Camino 1.5</td>
-          <td>OSX.3+</td>
-          <td>1.8</td>
-          <td style="">A</td>
-        </tr><tr role="row" class="odd">
-          <td class="sorting_1" tabindex="0">Gecko</td>
-          <td>Netscape 7.2</td>
-          <td>Win 95+ / Mac OS 8.6-9.2</td>
-          <td>1.7</td>
-          <td style="">A</td>
-        </tr><tr role="row" class="even">
-          <td class="sorting_1" tabindex="0">Gecko</td>
-          <td>Netscape Browser 8</td>
-          <td>Win 98SE+</td>
-          <td>1.7</td>
-          <td style="">A</td>
-        </tr><tr role="row" class="odd">
-          <td class="sorting_1" tabindex="0">Gecko</td>
-          <td>Netscape Navigator 9</td>
-          <td>Win 98+ / OSX.2+</td>
-          <td>1.8</td>
-          <td style="">A</td>
-        </tr><tr role="row" class="even">
-          <td class="sorting_1" tabindex="0">Gecko</td>
-          <td>Mozilla 1.0</td>
-          <td>Win 95+ / OSX.1+</td>
-          <td>1</td>
-          <td style="">A</td>
-        </tr></tbody>
-        <tfoot>
-        <tr><th rowspan="1" colspan="1">Rendering engine</th><th rowspan="1" colspan="1">Browser</th><th rowspan="1" colspan="1">Platform(s)</th><th rowspan="1" colspan="1">Engine version</th><th rowspan="1" colspan="1" style="">CSS grade</th></tr>
-        </tfoot>
-      </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
-    </div>
-    <!-- /.card-body -->
-  </div>
+<section class="content">
 
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">User List</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                    title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip"
+                    title="Remove">
+                    <i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="card-body p-0" style="display: block;">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 1%">
+                            #
+                        </th>
+                        <th style="width: 20%">
+                            User Name
+                        </th>
+                        <th style="width: 30%">
+                            User Image
+                        </th>
+                        <th>
+                            Roles & Permissions
+                        </th>
+                        <th style="width: 8%" class="text-center">
+                            Status
+                        </th>
+                        <th style="width: 20%">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            #
+                        </td>
+                        <td>
+                            <a>
+                                AdminLTE v3
+                            </a>
+                            <br>
+                            <small>
+                                Created 01.01.2019
+                            </small>
+                        </td>
+                        <td>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <img alt="Avatar" class="table-avatar" src="{{ asset('backend/image/profile.jpg') }}">
+                                </li>
+
+                            </ul>
+                        </td>
+                        <td class="project_progress">
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-green" role="progressbar" aria-volumenow="77"
+                                    aria-volumemin="0" aria-volumemax="100" style="width: 77%">
+                                </div>
+                            </div>
+                            <small>
+                                77% Complete
+                            </small>
+                        </td>
+                        <td class="project-state">
+                            <span class="badge badge-success">Active</span>
+                        </td>
+                        <td class="project-actions text-right">
+                            <a class="btn btn-info btn-sm" href="#">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                Edit
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#">
+                                <i class="fas fa-trash">
+                                </i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+</section>
 @endsection

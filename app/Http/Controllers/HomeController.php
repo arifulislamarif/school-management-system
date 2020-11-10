@@ -32,19 +32,22 @@ class HomeController extends Controller
     {
         return view('backend.setting');
     }
+
+    //Profile Section ============================
     public function profile()
+
     {
         $user = auth()->user();
-
-        return view('backend.profile', compact('user'));
+        return view('backend.profile.index', compact('user'));
     }
+    public function profile_edit(){
+        return view('backend.profile.edit');
+    }
+    //Profile Section End ===================
+
     public function users()
     {
         return view('backend.users');
-    }
-    public function roles()
-    {
-        return view('backend.roles&permissions');
     }
     public function messages()
     {
