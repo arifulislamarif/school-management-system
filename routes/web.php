@@ -12,4 +12,6 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/setting', [HomeController::class, 'setting'])->name('setting');
+    Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 });

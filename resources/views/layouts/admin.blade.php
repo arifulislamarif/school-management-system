@@ -43,8 +43,8 @@
                             @endif --}}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <a href="" class="dropdown-item text-primary" type="button"><i class="fas fa-user"></i> Profile</a>
-                            <a class="dropdown-item text-info" type="button" href=""><i class="fas fa-cog"></i> Settings</a>
+                        <a href="{{ route('profile') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user"></i> Profile</a>
+                        <a class="dropdown-item text-info" type="button" href="{{ route('setting') }}"><i class="fas fa-cog"></i> Settings</a>
                             <a class="dropdown-item text-danger" role="button" href="javascript:void(0)" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf
                             </form>
@@ -55,7 +55,7 @@
         </nav>
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="index3.html" class="brand-link">
+        <a href="{{ route('home') }}" class="brand-link">
                 <img src="{{ asset('backend') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
