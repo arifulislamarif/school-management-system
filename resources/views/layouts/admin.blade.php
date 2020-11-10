@@ -35,7 +35,7 @@
                     <div class="dropdown">
                         <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <img height="30px" width="30px" class="rounded-circle mr-1" src="" alt=""> {{ Auth::user()->name }}
+                    <img height="30px" width="30px" class="rounded-circle mr-1" src="{{ asset('backend/image/profile.jpg') }}" alt=""> {{ Auth::user()->name }}
                             {{-- @if (Auth::user()->image)
                             <img height="30px" width="30px" class="rounded-circle mr-1" src="{{ asset(Auth::user()->image) }}" alt=""> {{ Auth::user()->name }}
                             @else
@@ -44,7 +44,6 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a href="{{ route('profile') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user"></i> Profile</a>
-                        <a class="dropdown-item text-info" type="button" href="{{ route('setting') }}"><i class="fas fa-cog"></i> Settings</a>
                             <a class="dropdown-item text-danger" role="button" href="javascript:void(0)" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf
                             </form>
@@ -66,35 +65,33 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link active">
+                        <a href="{{ route('home') }}" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
-                                    <i class="right fas fa-angle-left"></i>
+
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="javascript:void(0)" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0)" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v2</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0)" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
+                        <a href="{{ route('users') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Dashboard
-                                    <span class="right badge badge-danger">New</span>
+                                    Users
                                 </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a href="{{ route('roles') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user-lock"></i>
+                                <p> Roles & Permissions</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="{{ route('messages') }}" class="nav-link">
+                                <i class="nav-icon fas fa-envelope"></i>
+                                <p> Messages</p>
                             </a>
                         </li>
 
@@ -114,12 +111,6 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" class="nav-link">
-                                <i class="nav-icon far fa-circle text-warning"></i>
-                                <p>Warning</p>
-                            </a>
                         </li>
                     </ul>
                 </nav>

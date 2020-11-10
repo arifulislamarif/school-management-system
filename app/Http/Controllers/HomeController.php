@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+
+use function GuzzleHttp\Promise\all;
 
 class HomeController extends Controller
 {
@@ -29,9 +32,22 @@ class HomeController extends Controller
     {
         return view('backend.setting');
     }
-
     public function profile()
     {
-        return view('backend.profile');
+        $user = auth()->user();
+
+        return view('backend.profile', compact('user'));
+    }
+    public function users()
+    {
+        return view('backend.users');
+    }
+    public function roles()
+    {
+        return view('backend.roles&permissions');
+    }
+    public function messages()
+    {
+        return view('backend.meaasages');
     }
 }
