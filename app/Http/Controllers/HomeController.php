@@ -30,7 +30,7 @@ class HomeController extends Controller
     }
     public function setting()
     {
-        return view('backend.setting');
+        return view('backend.setting.index');
     }
 
     //Profile Section ============================
@@ -49,9 +49,5 @@ class HomeController extends Controller
     public function users()
     {
         return view('backend.users');
-    }
-    public function messages()
-    {
-        return view('backend.meaasages');
     }
 }

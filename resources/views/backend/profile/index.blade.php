@@ -16,12 +16,11 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h3>User Profile Show</h3>
     <div class="card-body">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="text-center">
-                    <img width="80px" class="profile-user-img img-fluid img-circle" src="{{ asset('backend/image/profile.jpg') }}" alt="User profile picture">
+                    <img width="150px" class="profile-user-img img-fluid img-circle" src="{{ asset('backend/image/profile.jpg') }}" alt="User profile picture">
                   </div>
 
                   <h3 class="profile-username text-center">{{ $user->name }}</h3>
@@ -42,7 +41,7 @@
 
 
                   {{-- {{ route('user.edit', $user->id) }} --}}
-                <a href="#" class="btn btn-primary btn-block mb-3"><b>Go To Setting</b></a>
+                <a href="{{ route('setting') }}" class="btn btn-primary btn-block mb-3"><b>Go To Setting</b></a>
             </div>
         </div>
     </div>

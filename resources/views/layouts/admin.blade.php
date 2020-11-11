@@ -44,6 +44,7 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a href="{{ route('profile') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user"></i> Profile</a>
+                        <a href="{{ route('setting') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user-cog"></i> Setting</a>
                             <a class="dropdown-item text-danger" role="button" href="javascript:void(0)" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf
                             </form>
@@ -83,7 +84,7 @@
                         </li>
 
                         <li class="nav-item">
-                        <a href="{{ route('messages') }}" class="nav-link">
+                        <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-envelope"></i>
                                 <p> Messages</p>
                             </a>
@@ -107,14 +108,31 @@
                                 </li>
                             </ul>
                         </li>
-
-                        <li class="nav-item">
-                        <a href="{{ route('messages') }}" class="nav-link">
+                        <li class="nav-item has-treeview">
+                            <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
-                                <p> Setting</p>
+                                <p>
+                                    Setting
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                        <i class="fas fa-users nav-icon"></i>
+                                        <p>User</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" class="nav-link">
+                                        <i class="fas fa-lock nav-icon"></i>
+                                        <p>Roles & Permission</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-
                     </ul>
                 </nav>
             </div>
