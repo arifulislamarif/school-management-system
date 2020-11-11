@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,13 +12,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
+
+    //Home Route
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/setting', [HomeController::class, 'setting'])->name('setting');
 
     //Profile Route
-    Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
-
-    // /User Route
-    Route::get('/users', [HomeController::class, 'users'])->name('users');
-    Route::get('/messages', [HomeController::class, 'messages'])->name('messages');
+    Route::get('/setting',[ProfileController::class, 'setting'])->name('setting');
+    Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
+    Route::post('/profile/update', [ProfileController::class, 'profile_update'])->name('profile.update');
 });

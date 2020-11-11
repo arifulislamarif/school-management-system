@@ -28,26 +28,5 @@ class HomeController extends Controller
     {
         return view('backend.index');
     }
-    public function setting()
-    {
-        return view('backend.setting.index');
-    }
 
-    //Profile Section ============================
-    public function profile()
-
-    {
-        $user = auth()->user();
-        return view('backend.profile.index', compact('user'));
-    }
-    public function profile_edit(){
-        $profile = new User();
-        return view('backend.profile.edit');
-    }
-    //Profile Section End ===================
-
-    public function users()
-    {
-        return view('backend.users');
-    }
 }
