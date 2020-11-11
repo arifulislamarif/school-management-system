@@ -16,7 +16,6 @@ Route::middleware(['auth'])->group(function () {
 
     //Profile Route
     Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
-    Route::get('/profile/edit', [HomeController::class, 'profile_edit'])->name('profile.edit');
 
     // /User Route
     Route::get('/users', [HomeController::class, 'users'])->name('users');

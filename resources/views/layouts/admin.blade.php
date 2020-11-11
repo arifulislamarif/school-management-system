@@ -89,6 +89,7 @@
                             </a>
                         </li>
 
+
                         <li class="nav-item has-treeview">
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
@@ -106,6 +107,14 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="nav-item">
+                        <a href="{{ route('messages') }}" class="nav-link">
+                                <i class="nav-icon fas fa-cog"></i>
+                                <p> Setting</p>
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>

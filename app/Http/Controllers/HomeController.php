@@ -41,6 +41,7 @@ class HomeController extends Controller
         return view('backend.profile.index', compact('user'));
     }
     public function profile_edit(){
+        $profile = new User();
         return view('backend.profile.edit');
     }
     //Profile Section End ===================
