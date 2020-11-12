@@ -88,34 +88,33 @@
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
-                        <form class="form-horizontal" action="#" method="POST">
-                            @csrf
+                        <form class="form-horizontal" action="{{ route('profile.password.update',  Auth::user()->id) }}" method="POST">
                             @method('PUT')
+                            @csrf
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Current Password</label>
                                 <div class="col-sm-9">
-                                    <input name="current_password" type="password" class="form-control "
-                                        placeholder="Enter Current Password">
+                                    <input name="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" placeholder="Enter Current Password">
+                                    @error('current_password') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">New Password</label>
                                 <div class="col-sm-9">
-                                    <input name="password" type="password" class="form-control "
-                                        placeholder="Enter New Password">
+                                    <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter New Password">
+                                    @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Confirm Password</label>
                                 <div class="col-sm-9">
-                                    <input name="password_confirmation" type="password" class="form-control "
-                                        placeholder="Confirm New Password">
+                                    <input name="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Confirm New Password">
+                                    @error('password_confirmation') <div class="invalid-feedback"> {{ $message }}</div> @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="offset-sm-3 col-sm-9">
-                                    <button type="submit" class="btn btn-info"><i class="fas fa-sync-alt"></i>
-                                        Update Password</button>
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-sync"></i> Update Password</button>
                                 </div>
                             </div>
                         </form>

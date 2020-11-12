@@ -6,6 +6,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -41,4 +42,21 @@ class ProfileController extends Controller
         return back();
 
     }
+    public function profile_password_update(Request $request, $id){
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+        $password_check = Hash::check($request->current_password,Auth::user()->password);
+        if ($password_check) {
+            $user = User::findOrFail($id);
+            $user->update([
+                'password' => bcrypt($request->password),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+        return back();
+    }
+
 }
