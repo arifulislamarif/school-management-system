@@ -41,6 +41,7 @@ class ProfileController extends Controller
             $user->image = $db_image;
         }
         $user->save();
+        session()->flash('success', 'Role Updated Successfully!');
         return back();
     }
 
@@ -59,6 +60,7 @@ class ProfileController extends Controller
                 'updated_at' => Carbon::now(),
             ]);
         }
+        session()->flash('success', 'Role Updated Successfully!');
         return back();
     }
 }
