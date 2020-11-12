@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleUserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,4 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
     Route::put('/profile/update', [ProfileController::class, 'profile_update'])->name('profile.update');
     Route::put('/profile/password/{id}', [ProfileController::class, 'profile_password_update'])->name('profile.password.update');
+
+    //User Route
+    Route::resource('user', RoleUserController::class );
 });

@@ -72,14 +72,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Users
-                                </p>
-                            </a>
-                        </li>
+
                         <li class="nav-item has-treeview">
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
@@ -88,7 +81,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('user.index') }}" class="nav-link">
                                         <i class="fas fa-users nav-icon"></i>
                                         <p>User</p>
                                     </a>
