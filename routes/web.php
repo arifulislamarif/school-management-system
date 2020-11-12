@@ -19,5 +19,5 @@ Route::middleware(['auth'])->group(function () {
     //Profile Route
     Route::get('/setting',[ProfileController::class, 'setting'])->name('setting');
     Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
-    Route::post('/profile/update', [ProfileController::class, 'profile_update'])->name('profile.update');
+    Route::put('/profile/update', [ProfileController::class, 'profile_update'])->name('profile.update');
 });

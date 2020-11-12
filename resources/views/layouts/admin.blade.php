@@ -35,12 +35,11 @@
                     <div class="dropdown">
                         <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                    <img height="30px" width="30px" class="rounded-circle mr-1" src="{{ asset('backend/image/profile.jpg') }}" alt=""> {{ Auth::user()->name }}
-                            {{-- @if (Auth::user()->image)
-                            <img height="30px" width="30px" class="rounded-circle mr-1" src="{{ asset(Auth::user()->image) }}" alt=""> {{ Auth::user()->name }}
+                            @if (Auth::user()->image)
+                                <img width="30px" height="30px" id="image" class="rounded-circle mr-1" src="{{ asset(Auth::user()->image) }}" alt="User profile picture" > {{ Auth::user()->name }}
                             @else
-                            <img height="30px" width="30px" class="rounded-circle mr-1" src="{{ asset('modules/user/dist/img/default.png') }}" alt="">{{ Auth::user()->name }}
-                            @endif --}}
+                                <img width="30px" height="30px" id="image" class="rounded-circle mr-1" src="{{ asset('backend/image/defult.png') }}" alt="User profile picture" > {{ Auth::user()->name }}
+                            @endif
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a href="{{ route('profile') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user"></i> Profile</a>

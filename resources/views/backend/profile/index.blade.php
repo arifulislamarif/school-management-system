@@ -20,7 +20,12 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="text-center">
-                    <img width="150px" class="profile-user-img img-fluid img-circle" src="{{ asset('backend/image/profile.jpg') }}" alt="User profile picture">
+                    @if (Auth::user()->image)
+                                <img width="150px" height="150px" id="image" class="img-circle" src="{{ asset(Auth::user()->image) }}" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
+                            @else
+                                <img width="150px" height="150px" id="image" class="img-circle" src="{{ asset('backend/image/default.png') }}" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
+                            @endif
+                    {{-- <img width="150px" class="profile-user-img img-fluid img-circle" src="{{ asset('backend/image/profile.jpg') }}" alt="User profile picture"> --}}
                   </div>
 
                   <h3 class="profile-username text-center">{{ $user->name }}</h3>

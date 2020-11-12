@@ -33,25 +33,32 @@
                     <div class="col-md-6">
                         <div class="tab-pane active" id="gen_settings">
                             <div class="text-center mb-4">
-                                <img width="150px" height="150px" id="image" class="img-circle"
+                                @if (Auth::user()->image)
+                                <img width="150px" height="150px" id="image" class="img-circle" src="{{ asset(Auth::user()->image) }}" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
+                            @else
+                                <img width="150px" height="150px" id="image" class="img-circle" src="{{ asset('backend/image/defult.png') }}" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
+                            @endif
+                                {{-- <img width="150px" height="150px" id="image" class="img-circle"
                                     src="{{ asset('backend/image/profile.jpg') }}" alt="User profile picture"
-                                    style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
+                                    style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;"> --}}
                             </div>
-                        <form class="form-horizontal" action="#" method="POST" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                                @method('PUT')
                                @csrf
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Name</label>
                                     <div class="col-sm-9">
-                                        <input name="name" value="{{ Auth::user()->name }}" type="text" class="form-control"
+                                        <input name="name" value="{{ Auth::user()->name }}" type="text" class="form-control @error('name') is-invalid @enderror"
                                             placeholder="Enter New Name">
+                                            @error('name') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Email</label>
                                     <div class="col-sm-9">
-                                    <input name="email" value="{{ $user->email }}" type="email"
-                                            class="form-control" placeholder="Enter New Email">
+                                    <input name="email" value="{{ Auth::user()->email }}" type="email"
+                                            class="form-control @error('email') is-invalid @enderror" placeholder="Enter New Email">
+                                            @error('email') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
