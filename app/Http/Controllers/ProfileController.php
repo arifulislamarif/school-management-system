@@ -16,11 +16,13 @@ class ProfileController extends Controller
         $user = auth()->user();
         return view('backend.profile.index', compact('user'));
     }
+
     public function setting(){
 
         $user = auth()->user();
         return view('backend.profile.setting', compact('user'));
     }
+
     public function profile_update(Request $request, User $user){
         $id = Auth::user()->id;
         $this->validate($request, [
@@ -40,14 +42,15 @@ class ProfileController extends Controller
         }
         $user->save();
         return back();
-
     }
+
     public function profile_password_update(Request $request, $id){
         $request->validate([
             'current_password' => 'required',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
         ]);
+
         $password_check = Hash::check($request->current_password,Auth::user()->password);
         if ($password_check) {
             $user = User::findOrFail($id);
@@ -58,5 +61,4 @@ class ProfileController extends Controller
         }
         return back();
     }
-
 }

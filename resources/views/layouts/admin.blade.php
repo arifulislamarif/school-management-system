@@ -70,6 +70,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+<<<<<<< HEAD
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link {{ Route::is('home') ? ' active' : '' }}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -77,6 +78,18 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? ' menu-open' : '' }}">
+=======
+                        <li class="nav-item has-treeview menu-open">
+                        <a href="{{ route('home') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+>>>>>>> 3fa4912e87444867660c3f085f95c33f01634697
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>Advance Settings<i class="right fas fa-angle-left"></i>
@@ -84,7 +97,11 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+<<<<<<< HEAD
                                     <a href="{{ route('user.index') }}" class="nav-link {{ Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? ' active' : '' }}">
+=======
+                                <a href="{{ route('user.index') }}" class="nav-link">
+>>>>>>> 3fa4912e87444867660c3f085f95c33f01634697
                                         <i class="fas fa-users nav-icon"></i>
                                         <p>All Users</p>
                                     </a>
