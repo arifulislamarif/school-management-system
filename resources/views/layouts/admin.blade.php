@@ -8,10 +8,15 @@
 
     <title>AdminLTE 3 | Dashboard 2</title>
 
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('backend/dist/img') }}/16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('backend/dist/img') }}/32x32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('backend/dist/img') }}/64x64.png">
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/dist/css/adminlte.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    @yield('style')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -29,22 +34,23 @@
                 </div>
             </form>
 
-            <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li>
                     <div class="dropdown">
                         <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             @if (Auth::user()->image)
-                                <img width="30px" height="30px" id="image" class="rounded-circle mr-1" src="{{ asset(Auth::user()->image) }}" alt="User profile picture" > {{ Auth::user()->name }}
+                            <img width="30px" height="30px" class="rounded-circle mr-1" src="{{ asset(Auth::user()->image) }}" alt="User profile picture">{{ Auth::user()->name }}
                             @else
-                                <img width="30px" height="30px" id="image" class="rounded-circle mr-1" src="{{ asset('backend/image/defult.png') }}" alt="User profile picture" > {{ Auth::user()->name }}
+                            <img width="30px" height="30px" class="rounded-circle mr-1" src="{{ asset('backend/image/defult.png') }}" alt="User profile picture">{{ Auth::user()->name }}
                             @endif
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <a href="{{ route('profile') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user"></i> Profile</a>
-                        <a href="{{ route('setting') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user-cog"></i> Setting</a>
-                            <a class="dropdown-item text-danger" role="button" href="javascript:void(0)" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            <a href="{{ route('profile') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user"></i> Profile</a>
+                            <a href="{{ route('setting') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user-cog"></i> Setting</a>
+                            <a class="dropdown-item text-danger" role="button" href="javascript:void(0)"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                    class="fas fa-sign-out-alt"></i> Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf
                             </form>
                         </div>
@@ -54,9 +60,9 @@
         </nav>
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="{{ route('home') }}" class="brand-link">
-                <img src="{{ asset('backend') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
+            <a href="{{ route('home') }}" class="brand-link">
+                <img src="{{ asset('backend') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
             </a>
 
@@ -64,39 +70,29 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-item has-treeview menu-open">
-                        <a href="{{ route('home') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                </p>
-                            </a>
-                        </li>
                         <li class="nav-item">
-                        <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Users
-                                </p>
+                            <a href="{{ route('home') }}" class="nav-link {{ Route::is('home') ? ' active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? ' menu-open' : '' }}">
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
-                                <p>Advance Setting<i class="right fas fa-angle-left"></i>
+                                <p>Advance Settings<i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                    <a href="{{ route('user.index') }}" class="nav-link {{ Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? ' active' : '' }}">
                                         <i class="fas fa-users nav-icon"></i>
-                                        <p>User</p>
+                                        <p>All Users</p>
                                     </a>
                                 </li>
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="javascript:void(0)" class="nav-link">
+                                    <a href="{{ route('role.index') }}" class="nav-link {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') ? ' active' : '' }}">
                                         <i class="fas fa-lock nav-icon"></i>
                                         <p>Roles & Permission</p>
                                     </a>
@@ -134,12 +130,39 @@
     <script src="{{ asset('backend') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('backend') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <script src="{{ asset('backend') }}/dist/js/adminlte.js"></script>
-    <script src="{{ asset('backend') }}/dist/js/demo.js"></script>
     <script src="{{ asset('backend') }}/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
     <script src="{{ asset('backend') }}/plugins/raphael/raphael.min.js"></script>
     <script src="{{ asset('backend') }}/plugins/jquery-mapael/jquery.mapael.min.js"></script>
     <script src="{{ asset('backend') }}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
-    <script src="{{ asset('backend') }}/plugins/chart.js/Chart.min.js"></script>
-    <script src="{{ asset('backend') }}/dist/js/pages/dashboard2.js"></script>
+    <!-- toastr notification -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
+    <script>
+        @if(Session::has('success'))
+        toastr.success("{{ Session::get('success') }}", 'Success!')
+        @elseif(Session::has('warning'))
+        toastr.warning("{{ Session::get('warning') }}", 'Warning!')
+        @elseif(Session::has('error'))
+        toastr.error("{{ Session::get('error') }}", 'Error!')
+        @endif
+        // toast config
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "hideMethod": "fadeOut"
+        }
+    </script>
+
+    @yield('script')
 </body>
 </html>
