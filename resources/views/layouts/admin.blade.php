@@ -33,7 +33,9 @@
                     </div>
                 </div>
             </form>
-
+            @php
+                $user = Auth::user();
+            @endphp
             <ul class="navbar-nav ml-auto">
                 <li>
                     <div class="dropdown">
@@ -46,8 +48,12 @@
                             @endif
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <a href="{{ route('profile') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user"></i> Profile</a>
-                            <a href="{{ route('setting') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user-cog"></i> Setting</a>
+                            @if ($user->can('profile.view'))
+                                <a href="{{ route('profile') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user"></i> Profile</a>
+                            @endif
+                            @if ($user->can('profile.edit'))
+                                <a href="{{ route('setting') }}" class="dropdown-item text-primary" type="button"><i class="fas fa-user-cog"></i> Setting</a>
+                            @endif
                             <a class="dropdown-item text-danger" role="button" href="javascript:void(0)"
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                                     class="fas fa-sign-out-alt"></i> Logout</a>
@@ -65,40 +71,47 @@
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
             </a>
-
             <div class="sidebar">
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link {{ Route::is('home') ? ' active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? ' menu-open' : '' }}">
-                            <a href="javascript:void(0)" class="nav-link">
-                                <i class="nav-icon fas fa-cog"></i>
-                                <p>Advance Settings<i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('user.index') }}" class="nav-link {{ Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? ' active' : '' }}">
-                                        <i class="fas fa-users nav-icon"></i>
-                                        <p>All Users</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('role.index') }}" class="nav-link {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') ? ' active' : '' }}">
-                                        <i class="fas fa-lock nav-icon"></i>
-                                        <p>Roles & Permission</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        @if ($user->can('dashboard.view'))
+                            <li class="nav-item">
+                                <a href="{{ route('home') }}" class="nav-link {{ Route::is('home') ? ' active' : '' }}">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete') || $user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
+                            <li class="nav-item has-treeview {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? ' menu-open' : '' }}">
+                                <a href="javascript:void(0)" class="nav-link">
+                                    <i class="nav-icon fas fa-cog"></i>
+                                    <p>Advance Settings<i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete'))
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ route('user.index') }}" class="nav-link {{ Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? ' active' : '' }}">
+                                                <i class="fas fa-users nav-icon"></i>
+                                                <p>All Users</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                @endif
+                                @if ($user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ route('role.index') }}" class="nav-link {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') ? ' active' : '' }}">
+                                                <i class="fas fa-lock nav-icon"></i>
+                                                <p>Roles & Permission</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                @endif
+                            </li>
+                        @endif
+
                     </ul>
                 </nav>
             </div>

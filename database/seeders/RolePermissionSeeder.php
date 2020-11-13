@@ -27,7 +27,6 @@ class RolePermissionSeeder extends Seeder
                  'permissions' => [
                       // Dashboard permission
                      'dashboard.view',
-                     'dashboard.edit',
                  ]
              ],
              [

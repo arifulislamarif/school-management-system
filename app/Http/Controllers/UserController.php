@@ -17,7 +17,7 @@ use App\Models\User;
 class UserController extends Controller
 {
     use ValidatesRequests;
-    
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -34,7 +34,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('id','!=',Auth::user()->id)->SimplePaginate(10);
+        $users = User::where('id','!=',1)->SimplePaginate(10);
         return view('backend.users.index',compact('users'));
     }
 

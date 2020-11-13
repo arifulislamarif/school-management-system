@@ -81,7 +81,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="offset-sm-3 col-sm-9">
-                                    <button type="submit" class="btn btn-danger"><i class="fas fa-sync"></i> Update User</button>
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-sync"></i> Update</button>
                                 </div>
                             </div>
                         </form>

@@ -3,12 +3,12 @@
 @section('breadcrumbs')
 <div class="row mb-2 mt-4">
     <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Create Roles</h1>
+        <h1 class="m-0 text-dark">All Users</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-            <li class="breadcrumb-item active">Create Roles</li>
+            <li class="breadcrumb-item active">All Users</li>
         </ol>
     </div>
 </div>
@@ -21,17 +21,13 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title" style="line-height: 36px;">Create Role</h3>
+                    <h3 class="card-title" style="line-height: 36px;">Create User</h3>
                     <a href="{{ route('user.index') }}" class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i class="fas fa-arrow-left"></i>&nbsp;Back</a>
                 </div>
                 <div class="row pt-3 pb-4">
                     <div class="col-md-6 offset-md-3">
                         <div class="text-center mb-4">
-                            @if (Auth::user()->image)
-                            <img width="150px" height="150px" id="image" class="profile-user-img img-fluid img-circle" src="{{ asset(Auth::user()->image) }}" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
-                            @else
                             <img width="150px" height="150px" id="image" class="img-circle" src="{{ asset('backend/image/default.png') }}" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
-                            @endif
                         </div>
                         <form class="form-horizontal" action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -93,6 +89,13 @@
 @section('style')
   <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <style>
+      .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+            border: 1px solid #bdc6d0;
+            border-radius: 30px;
+        }
+        /* 0062cc */
+  </style>
 @endsection
 
 @section('script')

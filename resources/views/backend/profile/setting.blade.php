@@ -33,7 +33,7 @@
                                 @if (Auth::user()->image)
                                 <img width="150px" height="150px" id="image" class="img-circle" src="{{ asset(Auth::user()->image) }}" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
                                 @else
-                                <img width="150px" height="150px" class="img-circle" src="{{ asset('backend/image/defult.png') }}" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
+                                <img width="150px" height="150px" class="img-circle" src="{{ asset('backend/image/default.png') }}" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
                                 @endif
 
                             </div>
