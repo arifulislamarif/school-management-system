@@ -17,13 +17,20 @@ use App\Models\User;
 class UserController extends Controller
 {
     use ValidatesRequests;
+    public $user;
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(function($request,$next){
+            $this->user = Auth::guard('web')->user();
+            return $next($request);
+        });
     }
 
     public function dashboard(){
+        if (is_null($this->user) || !$this->user->can('dashboard.view')) {
+            abort(403,'Sorry !! You are Unauthorized to view dashboard.');
+        }
         return view('backend.index');
     }
 
@@ -34,6 +41,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        if (is_null($this->user) || !$this->user->can('admin.view')) {
+            abort(403,'Sorry !! You are Unauthorized to view users.');
+        }
         $users = User::where('id','!=',1)->SimplePaginate(10);
         return view('backend.users.index',compact('users'));
     }
@@ -45,6 +55,9 @@ class UserController extends Controller
      */
     public function create()
     {
+        if (is_null($this->user) || !$this->user->can('admin.create')) {
+            abort(403,'Sorry !! You are Unauthorized to create users.');
+        }
         $roles = Role::all();
         return view('backend.users.create',compact('roles'));
     }
@@ -57,6 +70,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if (is_null($this->user) || !$this->user->can('admin.create')) {
+            abort(403,'Sorry !! You are Unauthorized to store users.');
+        }
         $this->validate($request, [
             'name' => "required",
             'email' => "required|unique:users,email",
@@ -92,6 +108,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if (is_null($this->user) || !$this->user->can('admin.edit')) {
+            abort(403,'Sorry !! You are Unauthorized to edit users.');
+        }
         $user = User::findOrFail($id);
         $roles = Role::all();
         return view('backend.users.edit',compact('roles','user'));
@@ -106,6 +125,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (is_null($this->user) || !$this->user->can('admin.edit')) {
+            abort(403,'Sorry !! You are Unauthorized to update users.');
+        }
         $this->validate($request, [
             'name' => "required",
             'email' => "required|unique:users,email,$id",
@@ -146,6 +168,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if (is_null($this->user) || !$this->user->can('admin.delete')) {
+            abort(403,'Sorry !! You are Unauthorized to delete users.');
+        }
         $user = User::find($id);
         if(!is_null($user)){
             $user->delete();
