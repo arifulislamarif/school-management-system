@@ -90,11 +90,18 @@
   <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <style>
-      .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
-            border: 1px solid #bdc6d0;
+        .select2-results__option[aria-selected=true] {
+            display: none;
+        }
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+            color: #fff;
+            border: 1px solid #fff;
+            background: #007bff;
             border-radius: 30px;
         }
-        /* 0062cc */
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
+            color: #fff;
+        }
   </style>
 @endsection
 
