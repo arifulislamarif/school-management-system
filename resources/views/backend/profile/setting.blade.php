@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title') Profile Settings @endsection
 @section('breadcrumbs')
 <div class="row mb-2">
     <div class="col-sm-6">

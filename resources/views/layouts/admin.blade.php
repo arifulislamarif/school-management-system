@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>AdminLTE 3 | Dashboard 2</title>
+    <title>@yield('title')</title>
 
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('backend/dist/img') }}/16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('backend/dist/img') }}/32x32.png">

@@ -17,7 +17,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
 
     //Dashboard Route
-    Route::get('/home', [UserController::class, 'dashboard'])->name('home');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('home');
 
     //Profile Route
     Route::get('/profile/settings',[ProfileController::class, 'setting'])->name('setting');
