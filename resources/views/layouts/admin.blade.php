@@ -71,11 +71,6 @@
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Zakir Soft</span>
             </a>
-            {{-- <a href="{{ route('home') }}" class="brand-link">
-                <img src="{{ asset('backend') }}/image/64x64.png" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Zakir Soft</span>
-            </a> --}}
             <div class="sidebar">
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -91,7 +86,7 @@
                             <li class="nav-item has-treeview {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? ' menu-open' : '' }}">
                                 <a href="javascript:void(0)" class="nav-link">
                                     <i class="nav-icon fas fa-cog"></i>
-                                    <p>Advance Settings<i class="right fas fa-angle-left"></i>
+                                    <p>Others<i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
                                 @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete'))
@@ -109,7 +104,7 @@
                                         <li class="nav-item">
                                             <a href="{{ route('role.index') }}" class="nav-link {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') ? ' active' : '' }}">
                                                 <i class="fas fa-lock nav-icon"></i>
-                                                <p>Roles & Permission</p>
+                                                <p>All Roles</p>
                                             </a>
                                         </li>
                                     </ul>
