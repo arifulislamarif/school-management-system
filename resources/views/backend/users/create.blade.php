@@ -66,7 +66,7 @@
                                 <div class="col-sm-9">
                                     <select name="roles[]" class="select2bs4 @error('roles') is-invalid @enderror" multiple="multiple" data-placeholder="Select roles" style="width: 100%;">
                                         @foreach ($roles as $role)
-                                            <option id="{{ $role->id }}">{{ $role->name }}</option>
+                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('roles') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
