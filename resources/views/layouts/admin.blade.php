@@ -83,9 +83,9 @@
                             </li>
                         @endif
                         @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete') || $user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
-                            <li class="nav-item has-treeview {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? ' menu-open' : '' }}">
+                            <li class="nav-item has-treeview {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') || Route::is('website.setting.index') || Route::is('website.setting.create') || Route::is('website.setting.edit') ? ' menu-open' : '' }}">
                                 <a href="javascript:void(0)" class="nav-link">
-                                    <i class="nav-icon fas fa-cog"></i>
+                                    <i class="nav-icon fas fa-lock"></i>
                                     <p>Others<i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
@@ -109,9 +109,16 @@
                                         </li>
                                     </ul>
                                 @endif
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('website.setting.index') }}" class="nav-link  {{ Route::is('website.setting.index') || Route::is('website.setting.create') || Route::is('website.setting.edit')  ? ' active' : '' }}">
+                                            <i class="fas fa-users nav-icon"></i>
+                                            <p>Settings</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         @endif
-
                     </ul>
                 </nav>
             </div>
@@ -131,7 +138,7 @@
         </div>
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; {{ date('Y') }} <a href="http://zakirsoft.com">zakirsoft.com</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.0.5

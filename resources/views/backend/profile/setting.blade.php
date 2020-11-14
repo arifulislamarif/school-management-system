@@ -81,8 +81,7 @@
             <div class="tab-pane fade {{ $errors->has('current_password') || $errors->has('password') || $errors->has('password_confirmation') ? 'show active':''}}" id="settings" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
-                        <form class="form-horizontal" action="{{ route('profile.password.update',  Auth::user()->id) }}"
-                            method="POST">
+                        <form class="form-horizontal" action="{{ route('profile.password.update',  Auth::user()->id) }}" method="POST">
                             @method('PUT')
                             @csrf
                             <div class="form-group row">

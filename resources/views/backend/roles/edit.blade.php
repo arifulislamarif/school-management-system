@@ -21,7 +21,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title" style="line-height: 36px;">Edit Role - {{ $role->name }}</h3>
+                    <h3 class="card-title" style="line-height: 36px;">Edit Role</h3>
                     <a href="{{ route('role.index') }}" class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i class="fas fa-arrow-left"></i>&nbsp;Back</a>
                 </div>
                 <div class="row">
