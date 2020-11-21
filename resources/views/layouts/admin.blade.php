@@ -83,6 +83,23 @@
                             </li>
                         @endif
                         @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete') || $user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
+                                {{--  Categories Setting --}}
+                                <li class="nav-item has-treeview">
+                                    <a href="javascript:void(0)" class="nav-link">
+                                        <i class="nav-icon fas fa-tags"></i>
+                                        <p>Product<i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{  route('category.index') }}" class="nav-link">
+                                                <i class="fas fa-tag nav-icon"></i>
+                                                <p>Category List</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {{--Other Categories--}}
                             <li class="nav-item has-treeview {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') || Route::is('website.setting.index') || Route::is('website.setting.create') || Route::is('website.setting.edit') ? ' menu-open' : '' }}">
                                 <a href="javascript:void(0)" class="nav-link">
                                     <i class="nav-icon fas fa-lock"></i>
