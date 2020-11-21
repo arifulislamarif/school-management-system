@@ -35,7 +35,5 @@ Route::middleware(['auth'])->group(function () {
     //  Website Settings
     Route::resource('website/settings', WebsiteSettingsController::class,['names' => 'website.setting']);
 
-//    Category Route
-    Route::resource('category', CategoryController::class);
 
 });
