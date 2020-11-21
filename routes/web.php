@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebsiteSettingsController;
@@ -35,6 +36,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('website/settings', WebsiteSettingsController::class,['names' => 'website.setting']);
 
 //    Category Route
-    Route::resource('category', 'UserController');
+    Route::resource('category', CategoryController::class);
 
 });
