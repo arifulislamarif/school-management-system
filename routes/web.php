@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebsiteSettingsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DepertmentController;
 
 Route::get('/', function () {
     return redirect(route('login'));
@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
 
     //  Website Settings
     Route::resource('website/settings', WebsiteSettingsController::class,['names' => 'website.setting']);
-
+    // Depertment Route
+    Route::resource('depertment', DepertmentController::class);
 
 });

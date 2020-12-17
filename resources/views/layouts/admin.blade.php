@@ -82,10 +82,37 @@
                                 </a>
                             </li>
                         @endif
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon  fas fa-school"></i>
+                                <p>Academic<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('depertment.index') }}" class="nav-link">
+                                        <i class="fas fa-circle nav-icon" style="font-size: 10px"></i>
+                                        <p>Depertment List</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>Users<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="fas fa-circle nav-icon" style="font-size: 10px"></i>
+                                        <p> List </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete') || $user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
-                                {{--Other Categories--}}
                             <li class="nav-item has-treeview {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') || Route::is('website.setting.index') || Route::is('website.setting.create') || Route::is('website.setting.edit') ? ' menu-open' : '' }}">
-                                <a href="javascript:void(0)" class="nav-link">
+                                <a href="javascript:void(0)" class="nav-link {{ Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') || Route::is('website.setting.index') || Route::is('website.setting.create') || Route::is('website.setting.edit') ? ' active' : '' }}">
                                     <i class="nav-icon fas fa-lock"></i>
                                     <p>Others<i class="right fas fa-angle-left"></i>
                                     </p>
@@ -157,6 +184,7 @@
     <script src="{{ asset('backend') }}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
     <!-- toastr notification -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
+
     <script>
         @if(Session::has('success'))
         toastr.success("{{ Session::get('success') }}", 'Success!')
@@ -182,8 +210,10 @@
             "hideEasing": "linear",
             "hideMethod": "fadeOut"
         }
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
     </script>
-
     @yield('script')
 </body>
 </html>
