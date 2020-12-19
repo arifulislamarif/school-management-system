@@ -107,4 +107,10 @@ class DepertmentController extends Controller
         session()->flash('success', 'Depertment Deleted Successfully!');
         return back();
     }
+
+    public function multiple_delete(Request $request){
+       $ids = $request->id;
+       Depertment::whereIn('id',$ids)->delete();
+       return response()->json(['success','Selected Depertment Item Deleted Successfully!']);
+    }
 }

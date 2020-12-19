@@ -20,8 +20,18 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('image')->default('backend/image/default.png');
+            $table->unsignedBigInteger('depertment_id')->nullable();
+            $table->tinyInteger('age')->nullable();
+            $table->tinyInteger('gender')->nullable();
+            $table->string('date_of_birth')->nullable();
+            $table->tinyInteger('blood_group')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('role')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('depertment_id')->references('id')->on('depertments')->onDelete('cascade');
         });
     }
 

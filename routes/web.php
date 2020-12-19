@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DepertmentController;
+use App\Http\Controllers\TeacherController;
 
 Route::get('/', function () {
     return redirect(route('login'));
@@ -34,7 +35,13 @@ Route::middleware(['auth'])->group(function () {
 
     //  Website Settings
     Route::resource('website/settings', WebsiteSettingsController::class,['names' => 'website.setting']);
+
     // Depertment Route
     Route::resource('depertment', DepertmentController::class);
+    Route::delete('/multiple/delete', [DepertmentController::class, 'multiple_delete'])->name('multiple_delets');
+
+    // Teacher Route
+    Route::resource('teacher', TeacherController::class);
 
 });
+

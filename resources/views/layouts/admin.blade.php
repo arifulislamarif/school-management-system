@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
 
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('backend/dist/img') }}/16x16.png">
@@ -84,6 +84,20 @@
                         @endif
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>Users<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('teacher.index') }}" class="nav-link">
+                                        <i class="fas fa-circle nav-icon" style="font-size: 10px"></i>
+                                        <p>Teacher </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link ">
                                 <i class="nav-icon  fas fa-school"></i>
                                 <p>Academic<i class="right fas fa-angle-left"></i></p>
                             </a>
@@ -92,20 +106,6 @@
                                     <a href="{{ route('depertment.index') }}" class="nav-link">
                                         <i class="fas fa-circle nav-icon" style="font-size: 10px"></i>
                                         <p>Depertment List</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>Users<i class="right fas fa-angle-left"></i></p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="fas fa-circle nav-icon" style="font-size: 10px"></i>
-                                        <p> List </p>
                                     </a>
                                 </li>
                             </ul>
